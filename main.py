@@ -41,9 +41,9 @@ def main():
                 elif event.key == pg.K_RIGHT:
                     s.move(1,0)
                 elif event.key == pg.K_UP:
-                    s.move(0,1)
+                    s.move(0,-1) #coord system is flipped
                 elif event.key == pg.K_DOWN:
-                    s.move(0,-1)
+                    s.move(0,1)
 
                 
 

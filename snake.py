@@ -32,8 +32,8 @@ class Snake(pg.sprite.Sprite):
     def move(self, x_sign, y_sign):
         x = self.pos[0]
         y = self.pos[1]
-        x += x + x_sign * self.speed
-        y += y + y_sign * self.speed
+        x = x + x_sign * self.speed
+        y = y + y_sign * self.speed
         self.pos = (x,y)
         print(self.pos)
         

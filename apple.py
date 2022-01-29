@@ -1,4 +1,4 @@
-import pygame 
+import pygame as pg
 import random
 
 class apple(pg.sprite.Sprite):
