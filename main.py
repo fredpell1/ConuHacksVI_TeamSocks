@@ -4,6 +4,7 @@ from tarfile import BLOCKSIZE
 from turtle import update
 import pygame as pg
 from snake import Snake
+from apple import apple
 BLACK = (0, 0, 0)
 WHITE = (200, 200, 200)
 SCREEN_WIDTH=625
@@ -17,13 +18,18 @@ back=pg.image.load('data\Grass.jpg')
 def main():
     global SCREEN, CLOCK
     pg.init()
+
+    #game objects
     s = Snake()
+    a = apple()
+
+
     SCREEN = pg.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     CLOCK = pg.time.Clock()
     SCREEN.fill(BLACK)
     SCREEN.blit(back,(0,0))
 
-    allsprites = pg.sprite.RenderPlain(s)
+    allsprites = pg.sprite.RenderPlain((s, a))
 
     flag= True
     while flag:
