@@ -1,7 +1,4 @@
-from cmath import rect
-from operator import truediv
-from tarfile import BLOCKSIZE
-from turtle import update
+import pygame_menu
 import pygame as pg
 from snake import Snake
 BLACK = (0, 0, 0)
@@ -11,20 +8,11 @@ SCREEN_HEIGHT=625
 FPS=10
 BLOCKSIZE = 25 
 
-
-back=pg.image.load('data\Grass.jpg')
-
-def main():
-    global SCREEN, CLOCK
-    pg.init()
-    s = Snake()
-    SCREEN = pg.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-    CLOCK = pg.time.Clock()
+def start_the_game():
     SCREEN.fill(BLACK)
     SCREEN.blit(back,(0,0))
-
+    s = Snake()
     allsprites = pg.sprite.RenderPlain(s)
-
     flag= True
     while flag:
         CLOCK.tick(FPS)
@@ -56,6 +44,27 @@ def main():
         SCREEN.blit(back, (0,0))
         allsprites.draw(SCREEN)
         pg.display.update()
+
+    pass
+
+
+back=pg.image.load('data\Grass.jpg')
+
+def main():
+    global SCREEN, CLOCK
+    pg.init()
+   
+    SCREEN = pg.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+    CLOCK = pg.time.Clock()
+   
+    menu = pygame_menu.Menu('SNAKEHACK', 625, 625,theme=pygame_menu.themes.THEME_GREEN)
+    
+    menu.add.button('Play', start_the_game)
+    menu.add.button('AI', start_the_game)
+    menu.add.button('Quit', pygame_menu.events.EXIT)
+    menu.mainloop(SCREEN)
+
+
 
 
 def drawGrid():
