@@ -19,11 +19,20 @@ class Snake(pg.sprite.Sprite):
         pg.sprite.Sprite.__init__(self) #call sprite initializer
         self.image = pg.image.load(r'data\block.jpg')
         self.rect = self.image.get_rect()
-        self.pos = (10,10)
+        self.pos = (200,200)
         self.speed = 10
+        self.direction = 'UP' #can be UP, DOWN, RIGHT, LEFT
 
 
     def update(self):
+        if self.direction == 'UP':
+            self.move(0,-1)
+        elif self.direction == 'DOWN':
+            self.move(0,1)
+        elif self.direction == 'LEFT':
+            self.move(-1,0)
+        elif self.direction == 'RIGHT':
+            self.move(1,0)
         
         self.rect.topleft = self.pos
         self.rect.move_ip(0,0)
@@ -32,6 +41,7 @@ class Snake(pg.sprite.Sprite):
     def move(self, x_sign, y_sign):
         x = self.pos[0]
         y = self.pos[1]
+        
         x = x + x_sign * self.speed
         y = y + y_sign * self.speed
         self.pos = (x,y)

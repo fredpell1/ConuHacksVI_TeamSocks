@@ -38,12 +38,16 @@ def main():
 
                 elif event.key == pg.K_LEFT:
                     s.move(-1, 0)
+                    s.direction = 'LEFT'
                 elif event.key == pg.K_RIGHT:
                     s.move(1,0)
+                    s.direction = 'RIGHT'
                 elif event.key == pg.K_UP:
                     s.move(0,-1) #coord system is flipped
+                    s.direction = 'UP'
                 elif event.key == pg.K_DOWN:
                     s.move(0,1)
+                    s.direction = 'DOWN'
 
                 
 
