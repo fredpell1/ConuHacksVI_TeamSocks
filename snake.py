@@ -17,7 +17,8 @@ class Snake(pg.sprite.Sprite):
 
     def __init__(self):
         pg.sprite.Sprite.__init__(self) #call sprite initializer
-        self.image, self.rect = load_image("block.jpg", -1)
+        self.image = pg.image.load(r'data\block.jpg')
+        self.rect = self.image.get_rect()
         self.pos = (10,10)
         self.speed = 10
 
@@ -34,4 +35,5 @@ class Snake(pg.sprite.Sprite):
         x += x + x_sign * self.speed
         y += y + y_sign * self.speed
         self.pos = (x,y)
+        print(self.pos)
         

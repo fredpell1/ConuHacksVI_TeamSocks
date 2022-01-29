@@ -1,7 +1,9 @@
 from cmath import rect
 from operator import truediv
 from tarfile import BLOCKSIZE
+from turtle import update
 import pygame as pg
+from snake import Snake
 BLACK = (0, 0, 0)
 WHITE = (200, 200, 200)
 SCREEN_WIDTH=625
@@ -15,10 +17,14 @@ back=pg.image.load('data\Grass.jpg')
 def main():
     global SCREEN, CLOCK
     pg.init()
+    s = Snake()
     SCREEN = pg.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     CLOCK = pg.time.Clock()
     SCREEN.fill(BLACK)
     SCREEN.blit(back,(0,0))
+
+    allsprites = pg.sprite.RenderPlain(s)
+
     flag= True
     while flag:
         CLOCK.tick(FPS)
@@ -26,8 +32,25 @@ def main():
         for event in pg.event.get():
             if event.type == pg.QUIT:
                 flag= False
-            elif event.type == pg.KEYDOWN and event.key == pg.K_ESCAPE:
-                flag = False
+            elif event.type == pg.KEYDOWN:
+                if event.key == pg.K_ESCAPE:
+                    flag = False
+
+                elif event.key == pg.K_LEFT:
+                    s.move(-1, 0)
+                elif event.key == pg.K_RIGHT:
+                    s.move(1,0)
+                elif event.key == pg.K_UP:
+                    s.move(0,1)
+                elif event.key == pg.K_DOWN:
+                    s.move(0,-1)
+
+                
+
+        allsprites.update()
+
+        SCREEN.blit(back, (0,0))
+        allsprites.draw(SCREEN)
         pg.display.update()
 
 
