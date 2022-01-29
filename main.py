@@ -10,7 +10,7 @@ FPS=10
 BLOCKSIZE = 25 
 
 
-
+back=pg.image.load('data\Grass.jpg')
 
 def main():
     global SCREEN, CLOCK
@@ -18,6 +18,7 @@ def main():
     SCREEN = pg.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     CLOCK = pg.time.Clock()
     SCREEN.fill(BLACK)
+    SCREEN.blit(back,(0,0))
     flag= True
     while flag:
         CLOCK.tick(FPS)
@@ -34,8 +35,9 @@ def drawGrid():
     
     for x in range(0, SCREEN_WIDTH,BLOCKSIZE):
         for y in range(0, SCREEN_HEIGHT, BLOCKSIZE):
-            rect = pg.Rect(x, y, BLOCKSIZE, BLOCKSIZE)
+            rect = pg.Rect(x, y,BLOCKSIZE, BLOCKSIZE)
             pg.draw.rect(SCREEN, WHITE, rect, 1)
+   
 
 
 if __name__ == '__main__':
