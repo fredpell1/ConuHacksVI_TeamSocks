@@ -1,3 +1,4 @@
+from msilib.schema import Icon
 import pygame_menu
 import pygame as pg
 from snake import Snake
@@ -55,13 +56,16 @@ def main():
     pg.init()
    
     SCREEN = pg.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+    pg.display.set_caption('SNAKEHACK')
     CLOCK = pg.time.Clock()
-   
+    a = pg.image.load('data\Apple.png')
+    pg.display.set_icon(a)
     menu = pygame_menu.Menu('SNAKEHACK', 625, 625,theme=pygame_menu.themes.THEME_GREEN)
     
     menu.add.button('Play', start_the_game)
     menu.add.button('AI', start_the_game)
     menu.add.button('Quit', pygame_menu.events.EXIT)
+    
     menu.mainloop(SCREEN)
 
 
