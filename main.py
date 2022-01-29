@@ -35,8 +35,9 @@ def drawGrid():
     
     for x in range(0, SCREEN_WIDTH,BLOCKSIZE):
         for y in range(0, SCREEN_HEIGHT, BLOCKSIZE):
-            rect = pg.Rect(x, y, BLOCKSIZE, BLOCKSIZE)
+            rect = pg.Rect(x, y,BLOCKSIZE, BLOCKSIZE)
             pg.draw.rect(SCREEN, WHITE, rect, 1)
+   
 
 
 if __name__ == '__main__':
