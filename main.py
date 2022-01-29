@@ -10,7 +10,7 @@ FPS=10
 BLOCKSIZE = 25 
 
 
-
+back=pg.image.load('data\Grass.jpg')
 
 def main():
     global SCREEN, CLOCK
@@ -18,6 +18,7 @@ def main():
     SCREEN = pg.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     CLOCK = pg.time.Clock()
     SCREEN.fill(BLACK)
+    SCREEN.blit(back,(0,0))
     flag= True
     while flag:
         CLOCK.tick(FPS)
