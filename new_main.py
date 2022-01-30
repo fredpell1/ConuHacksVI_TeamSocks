@@ -53,12 +53,14 @@ def start_the_game():
                     #s.direction = 'DOWN'
                     s.move('DOWN')
                     last_move = 'DOWN'
+                elif event.key == pg.K_SPACE:
+                    s.add()
         
         if outsideBorder(s): 
             flag=False 
             LOST=True
         print(s.body[0].rect)
-        #allsprites.add(s.body)
+        allsprites.add(s.body)
         s.move(last_move)
         #allsprites.update()
         SCREEN.blit(back, (0,0))
