@@ -1,13 +1,28 @@
+from shutil import move
 import pygame as pg
 
 class snake_container():
 
+
+    class snake_node(pg.sprite.Sprite):
+
+        def __init__(self, pos = (200,200,25,25), color = (255,0,0)):
+            pg.sprite.Sprite.__init__(self)
+            self.rect = pos
+            self.image = pg.Surface([25,25])
+            self.image.fill(color)
+            self.color = color
+            
+
+        
+
     dx = 25
     dy = 25
-
+   
+    
     def __init__(self, head_pos = (200,200,25,25), color = (255,0,0)):
         
-        self.body = [snake_node(head_pos, color=color), snake_node((200,225,25,25)), snake_node((200,250,25,25))]
+        self.body = [self.snake_node(head_pos, color=color), self.snake_node((200,225,25,25)), self.snake_node((200,250,25,25)), self.snake_node((200,275,25,25))]
         self.direction = 'UP'
         self.color  = color
 
@@ -47,14 +62,14 @@ class snake_container():
     #         pg.draw.rect(surface, self.color, rec)
         
 
-class snake_node(pg.sprite.Sprite):
+# class snake_node(pg.sprite.Sprite):
 
-    def __init__(self, pos = (200,200,25,25), color = (255,0,0)):
-        pg.sprite.Sprite.__init__(self)
-        self.rect = pos
-        self.image = pg.Surface([25,25])
-        self.image.fill(color)
-        self.color = color
+#     def __init__(self, pos = (200,200,25,25), color = (255,0,0)):
+#         pg.sprite.Sprite.__init__(self)
+#         self.rect = pos
+#         self.image = pg.Surface([25,25])
+#         self.image.fill(color)
+#         self.color = color
 
 
 
