@@ -1,20 +1,20 @@
-import pygame 
+import pygame as pg
 import random
 
 class apple(pg.sprite.Sprite):
-    def __init__(self):
+    def __init__(self, color = (255,0,0)):
         pg.sprite.Sprite.__init__(self)
-        self.position = ((random.randrange(0, 25), random.randrange(0, 25)))
-        self.eaten = False
+        self.position = ((random.randrange(0, 400), random.randrange(0, 400)))
+        self.rect = self.position
+        self.image.fill(color)
+        self.color = color
+        self.isEaten = False
+
 
     def update(self):
-        
-        self.position = ((random.randrange(0, 25), random.randrange(0, 25)))
+        if self.isEaten is True:
+            self.position = ((random.randrange(0, 400), random.randrange(0, 400)))
 
-    def eaten(self):
-        if not self.eaten:
-            self.eaten = True
 
-    
-    def not_eaten(self):
-        self.eaten = False
+    def digest(self):
+        self.isEaten = True
