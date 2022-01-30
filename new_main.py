@@ -8,7 +8,7 @@ BLACK = (0, 0, 0)
 WHITE = (200, 200, 200)
 SCREEN_WIDTH=625
 SCREEN_HEIGHT=625
-FPS=10
+FPS=7
 BLOCKSIZE = 25 
 
 def start_the_game():
