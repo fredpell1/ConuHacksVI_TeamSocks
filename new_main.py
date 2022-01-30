@@ -35,20 +35,20 @@ def start_the_game():
                 if event.key == pg.K_ESCAPE:
                     flag = False
 
-                elif event.key == pg.K_LEFT:
+                elif event.key == pg.K_LEFT and last_move != 'RIGHT':
                     s.move('LEFT')
                     last_move = 'LEFT'
-                elif event.key == pg.K_RIGHT:
+                elif event.key == pg.K_RIGHT and last_move != 'LEFT':
                     #s.move(1,0)
                     #s.direction = 'RIGHT'
                     s.move('RIGHT')
                     last_move = 'RIGHT'
-                elif event.key == pg.K_UP:
+                elif event.key == pg.K_UP and last_move != 'DOWN':
                     #s.move(0,-1) #coord system is flipped
                     #s.direction = 'UP'
                     s.move('UP')
                     last_move = 'UP'
-                elif event.key == pg.K_DOWN:
+                elif event.key == pg.K_DOWN and last_move != 'UP':
                     #s.move(0,1)
                     #s.direction = 'DOWN'
                     s.move('DOWN')
