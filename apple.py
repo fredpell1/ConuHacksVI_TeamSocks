@@ -4,8 +4,8 @@ import random
 class apple(pg.sprite.Sprite):
     def __init__(self, color = (255,0,0)):
         pg.sprite.Sprite.__init__(self)
-        self.position = ((random.randrange(0, 400), random.randrange(0, 400)))
-        self.rect = self.position
+        self.rect = (random.randrange(0, 400), random.randrange(0, 400), 25, 25)
+        self.image = pg.Surface([25, 25])
         self.image.fill(color)
         self.color = color
         self.isEaten = False
@@ -13,7 +13,7 @@ class apple(pg.sprite.Sprite):
 
     def update(self):
         if self.isEaten is True:
-            self.position = ((random.randrange(0, 400), random.randrange(0, 400)))
+            self.rect = (random.randrange(0, 400), random.randrange(0, 400), 25, 25)
 
 
     def digest(self):
