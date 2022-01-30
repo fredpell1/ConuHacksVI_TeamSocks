@@ -22,12 +22,19 @@ def collide(s:snake_container):
             return True
     return False
 
+def eat_apple(s:snake_container, a:apple):
+    head = pg.Rect(s.body[0].rect)
+    if head.colliderect(a.rect):
+        return True
+
 def start_the_game():
     SCREEN.fill(BLACK)
     #SCREEN.blit(back,(0,0))
     
     s = snake_container()
+    a = apple()
     allsprites = pg.sprite.RenderPlain(s.body)
+    allsprites.add(a)
     flag= True
     pg.display.set_caption('SNAKEHACK')
     while flag:    
@@ -62,8 +69,8 @@ def start_the_game():
                     #s.direction = 'DOWN'
                     s.move('DOWN')
                     last_move = 'DOWN'
-                elif event.key == pg.K_SPACE:
-                    s.add()
+                # elif event.key == pg.K_SPACE:
+                #     s.add()
         
         if outsideBorder(s): 
             pg.display.set_caption("You lost ")
@@ -72,11 +79,16 @@ def start_the_game():
         if collide(s):
             pg.display.set_caption("You lost ")
             flag = False
+
+        if eat_apple(s,a):
+            a.isEaten = True
+            s.add()
         
         print(s.body[0].rect)
         allsprites.add(s.body)
+        allsprites.add(a)
         s.move(last_move)
-        #allsprites.update()
+        allsprites.update()
         SCREEN.blit(back, (0,0))
         allsprites.draw(SCREEN)
         
