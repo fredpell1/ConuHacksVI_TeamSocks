@@ -49,8 +49,9 @@ def start_the_game():
 
         allsprites.add(s.body)
         allsprites.update()
+        SCREEN.blit(back,(0,0))
         allsprites.draw(SCREEN)
-        ##allsprites.remove()
+        
         
         
         
