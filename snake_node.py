@@ -80,12 +80,3 @@ class snake_container():
             ))
 
 
-
-if __name__ == '__main__':
-
-    s = snake_container()
-    print(s.body[0].rect, s.body[1].rect, s.body[2].rect)
-    s.move('RIGHT')
-    print(s.body[0].rect, s.body[1].rect, s.body[2].rect)
-    #s.add()
-    #print(s.body[0].rect, s.body[1].rect, s.body[2].rect, s.body[3].rect)
