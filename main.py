@@ -38,7 +38,7 @@ def start_the_game():
                 elif event.key == pg.K_DOWN:
                     s.move(0,1)
                     s.direction = 'DOWN'
-
+    # if snake.x<0 or snake.x>SCREEN_WIDTH or snake.y<0 or snake.y>SCREEN_HEIGHT
                 
 
         allsprites.update()
