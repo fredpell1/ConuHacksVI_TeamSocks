@@ -11,7 +11,9 @@ WHITE = (200, 200, 200)
 SCREEN_WIDTH=625
 SCREEN_HEIGHT=625
 FPS=7
-BLOCKSIZE = 25 
+BLOCKSIZE = 25
+
+
 def outsideBorder(s):
     return s.body[0].rect[0]<0 or s.body[0].rect[0]>SCREEN_WIDTH or s.body[0].rect[1]<0 or s.body[0].rect[1]>SCREEN_HEIGHT
 
@@ -25,6 +27,7 @@ def collide(s:snake_container):
 def eat_apple(s:snake_container, a:apple):
     head = pg.Rect(s.body[0].rect)
     if head.colliderect(a.rect):
+       
         return True
 
 def start_the_game():
@@ -37,10 +40,11 @@ def start_the_game():
     allsprites.add(a)
     flag= True
     pg.display.set_caption('SNAKEHACK')
-    while flag:    
+    numapple=0  
+    while flag:       
         CLOCK.tick(FPS)
         SCREEN.fill(BLACK)
-        #SCREEN.blit(back,(0,0))
+        
         drawGrid()
         last_move = s.direction
         for event in pg.event.get():
@@ -73,14 +77,15 @@ def start_the_game():
                 #     s.add()
         
         if outsideBorder(s): 
-            pg.display.set_caption("You lost ")
+            pg.display.set_caption(f"You lost, Final Score: {numapple}")
             flag=False
 
         if collide(s):
-            pg.display.set_caption("You lost ")
+            pg.display.set_caption(f"You lost, Final Score: {numapple}")
             flag = False
 
         if eat_apple(s,a):
+            numapple=numapple+1
             a.isEaten = True
             s.add()
         
