@@ -1,4 +1,6 @@
+from email import message
 from msilib.schema import Icon
+from pickle import TRUE
 import pygame_menu
 import pygame as pg
 
@@ -10,7 +12,8 @@ SCREEN_WIDTH=625
 SCREEN_HEIGHT=625
 FPS=7
 BLOCKSIZE = 25 
-
+def outsideBorder(s):
+    return s.body[0].rect[0]<0 or s.body[0].rect[0]>SCREEN_WIDTH or s.body[0].rect[1]<0 or s.body[0].rect[1]>SCREEN_HEIGHT
 def start_the_game():
     SCREEN.fill(BLACK)
     #SCREEN.blit(back,(0,0))
@@ -50,7 +53,11 @@ def start_the_game():
                     #s.direction = 'DOWN'
                     s.move('DOWN')
                     last_move = 'DOWN'
-
+        
+        if outsideBorder(s): 
+            flag=False 
+            LOST=True
+        print(s.body[0].rect)
         #allsprites.add(s.body)
         s.move(last_move)
         #allsprites.update()
@@ -79,8 +86,8 @@ def main():
     CLOCK = pg.time.Clock()
     a = pg.image.load('data\Apple.png')
     pg.display.set_icon(a)
-    menu = pygame_menu.Menu('SNAKEHACK', 625, 625,theme=pygame_menu.themes.THEME_GREEN)
     
+    menu = pygame_menu.Menu('SNAKEHACK', 625, 625,theme=pygame_menu.themes.THEME_GREEN)
     menu.add.button('Play', start_the_game)
     menu.add.button('AI', start_the_game)
     menu.add.button('Quit', pygame_menu.events.EXIT)
