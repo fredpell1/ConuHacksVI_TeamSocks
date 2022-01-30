@@ -3,6 +3,7 @@ import pygame_menu
 import pygame as pg
 from snake import Snake
 from apple import apple
+from snake_node import snake_node, snake_container
 BLACK = (0, 0, 0)
 WHITE = (200, 200, 200)
 SCREEN_WIDTH=625
@@ -12,13 +13,17 @@ BLOCKSIZE = 25
 
 def start_the_game():
     SCREEN.fill(BLACK)
-    SCREEN.blit(back,(0,0))
-    s = Snake()
-    allsprites = pg.sprite.RenderPlain(s)
+    #SCREEN.blit(back,(0,0))
+    
+    s = snake_container()
+    allsprites = pg.sprite.RenderPlain(s.body)
     flag= True
     while flag:
         CLOCK.tick(FPS)
+        SCREEN.fill(BLACK)
+        #SCREEN.blit(back,(0,0))
         drawGrid()
+        
         for event in pg.event.get():
             if event.type == pg.QUIT:
                 flag= False
@@ -27,24 +32,32 @@ def start_the_game():
                     flag = False
 
                 elif event.key == pg.K_LEFT:
-                    s.move(-1, 0)
-                    s.direction = 'LEFT'
+                   
+                    s.move('LEFT')
                 elif event.key == pg.K_RIGHT:
-                    s.move(1,0)
-                    s.direction = 'RIGHT'
+                    #s.move(1,0)
+                    #s.direction = 'RIGHT'
+                    s.move('RIGHT')
                 elif event.key == pg.K_UP:
-                    s.move(0,-1) #coord system is flipped
-                    s.direction = 'UP'
+                    #s.move(0,-1) #coord system is flipped
+                    #s.direction = 'UP'
+                    s.move('UP')
                 elif event.key == pg.K_DOWN:
-                    s.move(0,1)
-                    s.direction = 'DOWN'
-    # if snake.x<0 or snake.x>SCREEN_WIDTH or snake.y<0 or snake.y>SCREEN_HEIGHT
-                
+                    #s.move(0,1)
+                    #s.direction = 'DOWN'
+                    s.move('DOWN')
 
+        allsprites.add(s.body)
         allsprites.update()
-
-        SCREEN.blit(back, (0,0))
+        SCREEN.blit(back,(0,0))
         allsprites.draw(SCREEN)
+        
+        
+        
+        
+
+        #SCREEN.blit(back, (0,0))
+        
         pg.display.update()
 
     pass
