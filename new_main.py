@@ -1,7 +1,7 @@
 from msilib.schema import Icon
 import pygame_menu
 import pygame as pg
-from snake import Snake
+
 from apple import apple
 from snake_node import  snake_container
 BLACK = (0, 0, 0)
