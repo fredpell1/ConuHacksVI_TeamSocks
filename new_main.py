@@ -14,6 +14,14 @@ FPS=7
 BLOCKSIZE = 25 
 def outsideBorder(s):
     return s.body[0].rect[0]<0 or s.body[0].rect[0]>SCREEN_WIDTH or s.body[0].rect[1]<0 or s.body[0].rect[1]>SCREEN_HEIGHT
+
+def collide(s:snake_container):
+    head = pg.Rect(s.body[0].rect)
+    for i,rect in enumerate(s.body):
+        if i != 0 and head.colliderect(rect):
+            return True
+    return False
+
 def start_the_game():
     SCREEN.fill(BLACK)
     #SCREEN.blit(back,(0,0))
@@ -59,7 +67,12 @@ def start_the_game():
         
         if outsideBorder(s): 
             pg.display.set_caption("You lost ")
-            flag=False 
+            flag=False
+
+        if collide(s):
+            pg.display.set_caption("You lost ")
+            flag = False
+        
         print(s.body[0].rect)
         allsprites.add(s.body)
         s.move(last_move)
